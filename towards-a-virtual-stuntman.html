@@ -1,0 +1,280 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="utf-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+            <title>Deep Mimic</title>
+        <meta name="description" content="Code accompanying the SIGGRAPH 2018 paper: "DeepMimic: Example-Guided Deep Reinforcement Learning of Physics-Based Character Skills". " />
+        <meta name="robots" content="index, follow" /> 
+        <meta name="generator" content="Publii Open-Source CMS for Static Site" />
+        <link rel="canonical" href="towards-a-virtual-stuntman.html">
+        
+        <link rel="alternate" type="application/atom+xml" href="feed.xml" />
+<link rel="alternate" type="application/json" href="feed.json" />
+
+        <meta property="og:title" content="Towards a Virtual Stuntman" /><meta property="og:image" content="media/posts/1/teaser.gif"/><meta property="og:site_name" content="www.balavivek.com" /><meta property="og:description" content="Code accompanying the SIGGRAPH 2018 paper: 'DeepMimic: Example-Guided Deep Reinforcement Learning of Physics-Based Character Skills'. " /><meta property="og:url" content="towards-a-virtual-stuntman.html" /><meta property="og:type" content="article" />
+        <link rel="preconnect" href="https://fonts.gstatic.com/" crossorigin>
+        <style>h1,h2,h3,h4,h5,h6,.btn,[type=button],[type=submit],button,.navbar .navbar__menu li,.navbar_mobile_sidebar .navbar__menu li,.feed__author,.post__tag,.post__share>a span,.post__nav-link>span,.footer{font-family:-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,Oxygen,Ubuntu,Cantarell,"Fira Sans","Droid Sans","Helvetica Neue",Arial,sans-serif,"Apple Color Emoji","Segoe UI Emoji","Segoe UI Symbol"}body,h1,.h1,blockquote,.search__input,.author__name,.author__info>p,.feed__item h2,.post__nav-link{font-family:-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,Oxygen,Ubuntu,Cantarell,"Fira Sans","Droid Sans","Helvetica Neue",Arial,sans-serif,"Apple Color Emoji","Segoe UI Emoji","Segoe UI Symbol"}</style>
+        <link rel="stylesheet" href="assets/css/style.css?v=f700e17e9ba0305db9b2092739b2ccca">
+        <script type="application/ld+json">{"@context":"http://schema.org","@type":"Article","mainEntityOfPage":{"@type":"WebPage","@id":"towards-a-virtual-stuntman.html"},"headline":"Towards a Virtual Stuntman","datePublished":"2019-11-02T20:57","dateModified":"2019-11-02T21:00","image":{"@type":"ImageObject","url":"media/posts/1/teaser.gif","height":287,"width":800},"description":"Code accompanying the SIGGRAPH 2018 paper: \"DeepMimic: Example-Guided Deep Reinforcement Learning of Physics-Based Character Skills\". The framework uses reinforcement learning to train a simulated humanoid to imitate a variety of motion skills from mocap data. Project page: https://xbpeng.github.io/projects/DeepMimic/index.html States and Actions Reference data creation Network&hellip;","author":{"@type":"Person","name":"Balavivek"},"publisher":{"@type":"Organization","name":"Balavivek","logo":{"@type":"ImageObject","url":"media/website/logo.png","height":144,"width":350}}}</script>
+            <script src="assets/js/ls.parent-fit.min.js?v=1c78585e2a70398fe95085061942fd37"></script>
+            <script async src="assets/js/lazysizes.min.js?v=149ff45fc6c2f13e892e438a58abb77f"></script>          
+        
+        
+    </head>
+    <body>
+        <div class="site-container">
+   <header class="top" id="js-header">
+      <a class="logo" href="index.html">
+            <img src="media/website/logo.png" alt="www.balavivek.com">
+      </a>
+            <nav class="navbar js-navbar">
+               <button
+                  class="navbar__toggle js-toggle"
+                  aria-label="Menu"
+                  aria-haspopup="true"
+                  aria-expanded="false">
+                  <span class="navbar__toggle-box">
+                     <span class="navbar__toggle-inner">Menu</span>
+                  </span>
+               </button>
+             <ul class="navbar__menu">
+                  <li><a class="nav-link" href="/">Home</a></li>
+                  <li><a class="nav-link" href="honors-awards">Research & Achievements</a></li>
+                  <li><a class="nav-link active" href="blog">Blog</a></li>
+                  <li><a class="nav-link" href="contact">Contact</a></li>
+             </ul>
+            </nav>
+         <div class="search">
+            <div class="search__overlay js-search-overlay">
+               <div class="search__overlay-inner">
+                  <form action="search.html" class="search__form">
+                     <input
+                        class="search__input js-search-input"
+                        type="search"
+                        name="q"
+                        placeholder="search..."
+                        autofocus="autofocus"/>
+                  </form>
+                  <button class="search__close js-search-close" aria-label="Close">
+                     Close
+                  </button>
+               </div>
+            </div>
+            <button class="search__btn js-search-btn" aria-label="Search">
+               <svg role="presentation" focusable="false">
+                  <use xlink:href="assets/svg/svg-map.svg#search"/>
+               </svg>
+            </button>
+         </div>
+   </header>
+<main>
+      <article class="post">
+         <div class="hero">
+                     <figure class="hero__image">
+                        <img
+                           class="hero__image-img lazyload"
+                              data-src="media/posts/1/teaser.gif"
+                           data-srcset=""
+                           data-aspectratio="2.7874564459930316"
+                           data-sizes="auto"
+                           alt=""
+                           height="287"
+                           width="800">
+                     </figure>
+            <header class="hero__content">
+               <div class="wrapper">
+                     <div class="post__meta">
+                        <time datetime="2019-11-02T20:57">
+                              November 2, 2019
+                        </time>
+                     </div>
+                  <h1>
+                     Towards a Virtual Stuntman
+                  </h1>
+                     <div class="post__meta post__meta--author">
+                           <a href="authors/balavivek/index.html" class="feed__author invert">Balavivek</a>
+                     </div>
+               </div>
+            </header>
+         </div>
+          
+         <div class="wrapper post__entry">
+               <!-- <figure class="post__image"><img  src="media/posts/1/teaser.gif" alt=""  data-aspectratio="2.787456" width="800" height="287"></figure> -->
+<p>Code accompanying the SIGGRAPH 2018 paper: "DeepMimic: Example-Guided Deep Reinforcement Learning of Physics-Based Character Skills". The framework uses reinforcement learning to train a simulated humanoid to imitate a variety of motion skills from mocap data.</p>
+<p><strong>Project page</strong>: <a href="Project page: https:/xbpeng.github.io/projects/DeepMimic/index.html">https://xbpeng.github.io/projects/DeepMimic/index.html</a></p>
+<p><strong> States and Actions</strong></p>
+<ul>
+<li style="font-weight: 400;"><span style="font-weight: 400;">The state s describes the configuration of the character’s body, with features consisting of the relative positions of each link with respect to the root (designated to be the pelvis), their rotations expressed in quaternions, and their linear and angular velocities. </span></li>
+<li style="font-weight: 400;"><span style="font-weight: 400;">All features are computed in the character’s local coordinate frame, with the root at the origin and the x-axis along the root link’s facing direction</span></li>
+<li style="font-weight: 400;"><span style="font-weight: 400;">Policies trained to achieve additional task objectives, such as walking in a particular direction or hitting a target, are also provided with a goal g, which can be treated in a similarly fashion as the state. </span></li>
+<li style="font-weight: 400;"><span style="font-weight: 400;">The action a from the policy specifies target orientations for PD controllers at each joint. </span></li>
+</ul>
+<p><strong>Reference data creation</strong></p>
+<figure class="post__image"><img  src="media/posts/1/image10.gif" alt=""  data-aspectratio="1.331754" width="281" height="211"></figure><figure class="post__image"><img class="lazyload"  data-src="media/posts/1/image3.png" data-sizes="auto" data-srcset="media/posts/1/responsive/image3-xs.png 300w ,media/posts/1/responsive/image3-sm.png 480w ,media/posts/1/responsive/image3-md.png 768w ,media/posts/1/responsive/image3-lg.png 1024w ,media/posts/1/responsive/image3-xl.png 1360w ,media/posts/1/responsive/image3-2xl.png 1600w"  alt=""  data-aspectratio="3.169231" width="412" height="130"></figure>
+<p><strong>Network Architecture</strong></p>
+<ul>
+<li style="font-weight: 400;"><span style="font-weight: 400;">Policy π is represented by a neural network that maps a given state s and goal g to a distribution over action π(a|s,g). </span></li>
+<li style="font-weight: 400;"><span style="font-weight: 400;">The inputs are processed by two fully-connected layers with 1024, and 512 units each, followed by a linear output layer. ReLU activations are used for all hidden units.</span></li>
+</ul>
+<p><span style="font-weight: 400;">Permalink:</span><span style="font-weight: 400;"> <a href="#INTERNAL_LINK#/post/null">http://tiny.cc/qgwlfz</a></span></p>
+<p><strong>Reward  <figure class="post__image"><img class="lazyload"  data-src="media/posts/1/image1.png" data-sizes="auto" data-srcset="media/posts/1/responsive/image1-xs.png 300w ,media/posts/1/responsive/image1-sm.png 480w ,media/posts/1/responsive/image1-md.png 768w ,media/posts/1/responsive/image1-lg.png 1024w ,media/posts/1/responsive/image1-xl.png 1360w ,media/posts/1/responsive/image1-2xl.png 1600w"  alt=""  data-aspectratio="4.793103" width="139" height="29"></figure></strong></p>
+<ul>
+<li style="font-weight: 400;"><span style="font-weight: 400;">Pose Reward</span>
+<ul>
+<li style="font-weight: 400;"><span style="font-weight: 400;">Pose reward r^p  encourages the character to match the joint orientations of the reference motion at each step.</span></li>
+<li style="font-weight: 400;"><span style="font-weight: 400;">It is computed as the difference between the joint orientation quaternions of the simulated character and those of the reference motion. </span></li>
+<li style="font-weight: 400;"><figure class="post__image"><img class="lazyload"  data-src="media/posts/1/image4.png" data-sizes="auto" data-srcset="media/posts/1/responsive/image4-xs.png 300w ,media/posts/1/responsive/image4-sm.png 480w ,media/posts/1/responsive/image4-md.png 768w ,media/posts/1/responsive/image4-lg.png 1024w ,media/posts/1/responsive/image4-xl.png 1360w ,media/posts/1/responsive/image4-2xl.png 1600w"  alt=""  data-aspectratio="3.397260" width="248" height="73"></figure></li>
+</ul>
+</li>
+</ul>
+<ul>
+<li style="font-weight: 400;"><span style="font-weight: 400;">Velocity Reward</span>
+<ul>
+<li style="font-weight: 400;"><span style="font-weight: 400;">The velocity reward r^v is computed from the difference of local joint velocities, with angular velocity of the jth joint. The target velocity is computed from the data via finite difference.</span></li>
+<li style="font-weight: 400;"><figure class="post__image"><img class="lazyload"  data-src="media/posts/1/image6.png" data-sizes="auto" data-srcset="media/posts/1/responsive/image6-xs.png 300w ,media/posts/1/responsive/image6-sm.png 480w ,media/posts/1/responsive/image6-md.png 768w ,media/posts/1/responsive/image6-lg.png 1024w ,media/posts/1/responsive/image6-xl.png 1360w ,media/posts/1/responsive/image6-2xl.png 1600w"  alt=""  data-aspectratio="3.441558" width="265" height="77"></figure></li>
+</ul>
+</li>
+<li style="font-weight: 400;"><span style="font-weight: 400;">End Effector Reward</span>
+<ul>
+<li style="font-weight: 400;"><span style="font-weight: 400;">The end-effector reward ret encourages the character’s hands and feet to match the positions from the reference motion.</span></li>
+<li style="font-weight: 400;"><figure class="post__image"><img class="lazyload"  data-src="media/posts/1/image2.png" data-sizes="auto" data-srcset="media/posts/1/responsive/image2-xs.png 300w ,media/posts/1/responsive/image2-sm.png 480w ,media/posts/1/responsive/image2-md.png 768w ,media/posts/1/responsive/image2-lg.png 1024w ,media/posts/1/responsive/image2-xl.png 1360w ,media/posts/1/responsive/image2-2xl.png 1600w"  alt=""  data-aspectratio="3.780822" width="276" height="73"></figure></li>
+</ul>
+</li>
+<li style="font-weight: 400;"><span style="font-weight: 400;">r^c penalizes deviations in the character’s center-of-mass</span>
+<ul>
+<li style="font-weight: 400;"><figure class="post__image"><img class="lazyload"  data-src="media/posts/1/image7.png" data-sizes="auto" data-srcset="media/posts/1/responsive/image7-xs.png 300w ,media/posts/1/responsive/image7-sm.png 480w ,media/posts/1/responsive/image7-md.png 768w ,media/posts/1/responsive/image7-lg.png 1024w ,media/posts/1/responsive/image7-xl.png 1360w ,media/posts/1/responsive/image7-2xl.png 1600w"  alt=""  data-aspectratio="4.250000" width="238" height="56"></figure></li>
+</ul>
+</li>
+</ul>
+<figure class="post__image"><img class="lazyload"  data-src="media/posts/1/image5.png" data-sizes="auto" data-srcset="media/posts/1/responsive/image5-xs.png 300w ,media/posts/1/responsive/image5-sm.png 480w ,media/posts/1/responsive/image5-md.png 768w ,media/posts/1/responsive/image5-lg.png 1024w ,media/posts/1/responsive/image5-xl.png 1360w ,media/posts/1/responsive/image5-2xl.png 1600w"  alt="Permalink:https://github.com/bsivanantham/DeepMimic/blob/3c7f2171bb09512bee47d667de39761cde9b2d53/DeepMimicCore/scenes/SceneImitate.cpp#L130"  data-aspectratio="4.140845" width="588" height="142"></figure>
+<p><span style="font-weight: 400;">Permalink:</span><span style="font-weight: 400;"> <a href="#INTERNAL_LINK#/post/null">http://tiny.cc/ahwlfz</a></span></p>
+<p><strong>Results</strong></p>
+<p><div class="post__iframe"><iframe class="lazyload" width="560" height="315" data-src="https://www.youtube.com/embed/8QFzD-xEKzU" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen="allowfullscreen" data-mce-fragment="1"></iframe></div></p>
+<p>Code: <a href="#INTERNAL_LINK#/post/null">https://github.com/bsivanantham/DeepMimic</a></p>
+<p>Completely trained model: <a href="#INTERNAL_LINK#/post/null">http://tiny.cc/aiwlfz</a></p>
+<p><strong>Reference</strong></p>
+<p>The paper <a href="https://xbpeng.github.io/projects/DeepMimic/index.html" class="eq cf gy gz ha hb" target="_blank" rel="noopener noreferrer"><em class="he">DeepMimic: Example-Guided Deep Reinforcement Learning of Physics-Based Character Skills</em></a> has opened up exciting possibilities for improving visual demonstration with highly dynamic character skills.</p>
+<p>The DeepMimic open-sourced codes, data, and frameworks are available on <a href="https://github.com/bsivanantham/DeepMimic" target="_blank" rel="noopener noreferrer">GitHub</a>.</p>
+         </div>
+
+            <footer class="wrapper post__footer">
+
+                     <p class="post__last-updated">
+                        This article was updated on
+                           November 2, 2019
+                     </p>
+
+                     <ul class="post__tag">
+                           <li>
+                              <a href="artificialintelligence/index.html">#ArtificialIntelligence</a>
+                           </li>
+                           <li>
+                              <a href="deepmimic/index.html">#DeepMimic</a>
+                           </li>
+                           <li>
+                              <a href="reinforcementlearning/index.html">#ReinforcementLearning</a>
+                           </li>
+                     </ul>
+
+                  <div class="post__share">
+                        <a
+                           href="https://www.facebook.com/sharer/sharer.php?u=file%3A%2F%2F%2Fhome%2Fbalavivek%2FDocuments%2FPublii%2Fsites%2Fwwwbalavivekcom%2Fpreview%2Ftowards-a-virtual-stuntman.html"
+                           class="js-share facebook"
+                           rel="nofollow noopener noreferrer">
+                           <svg class="icon" aria-hidden="true" focusable="false">
+                              <use xlink:href="assets/svg/svg-map.svg#facebook"/>
+                           </svg>
+                           <span>Facebook</span>
+                        </a>
+                     
+                        <a
+                           href="https://twitter.com/share?url=file%3A%2F%2F%2Fhome%2Fbalavivek%2FDocuments%2FPublii%2Fsites%2Fwwwbalavivekcom%2Fpreview%2Ftowards-a-virtual-stuntman.html&amp;via=www.balavivek.com&amp;text=Towards%20a%20Virtual%20Stuntman"
+                           class="js-share twitter"
+                           rel="nofollow noopener noreferrer">
+                           <svg class="icon" aria-hidden="true" focusable="false">
+                              <use xlink:href="assets/svg/svg-map.svg#twitter"/>
+                           </svg>
+                           <span>Twitter</span>
+                        </a>
+                     
+                     
+                     
+                     
+                     
+                  </div>
+
+                  <div class="post__bio bio">
+                        <div class="bio__info">
+                           <h3 class="bio__name">
+                              <a href="authors/balavivek/index.html" class="invert" rel="author">Balavivek</a>
+                           </h3>
+
+                        </div>
+                  </div>
+            </footer>
+      </article>
+
+
+
+
+
+</main>
+<footer class="footer">
+        <div class="footer__social">
+                <a href="https://www.facebook.com/bala.vivek.3" aria-label="Facebook">
+                    <svg>
+                        <use xlink:href="assets/svg/svg-map.svg#facebook"/>
+                    </svg>
+                </a>
+                <a href="https://twitter.com/balavivek107" aria-label="Twitter">
+                    <svg>
+                        <use xlink:href="assets/svg/svg-map.svg#twitter"/>
+                    </svg>
+                </a>
+                <a href="https://www.instagram.com/balavivek107/" aria-label="Instagram">
+                    <svg>
+                        <use xlink:href="assets/svg/svg-map.svg#instagram"/>
+                    </svg>
+                </a>
+                <a href="https://www.linkedin.com/in/bsivanantham/" aria-label="LinkedIn">
+                    <svg>
+                        <use xlink:href="assets/svg/svg-map.svg#linkedin"/>
+                    </svg>
+                </a>
+        </div>
+        <div class="footer__copyright">
+            <p> </p>
+<p>Powered by <a href="https://getpublii.com" target="_blank" rel="nofollow noopener noreferrer">Publii Static CMS</a></p>
+        </div>
+       <button class="footer__bttop js-footer__bttop" aria-label="Back to top"> 
+           <svg>
+               <title>Back to top</title>
+               <use xlink:href="assets/svg/svg-map.svg#toparrow" />
+           </svg>
+       </button>   
+</footer>
+</div>
+
+<script>
+   window.publiiThemeMenuConfig = {    
+        mobileMenuMode: 'sidebar',
+        animationSpeed: 300,
+        submenuWidth: 'auto',
+        doubleClickTime: 500,
+        mobileMenuExpandableSubmenus: true, 
+        relatedContainerForOverlayMenuSelector: '.top',
+   };
+</script>
+<script defer src="assets/js/scripts.min.js?v=f56b13ba141d95ea2a0b7aab75ca9528"></script>
+
+<script>
+      var lazyFeaturedImage=function lazyFeaturedImage(){var b=document.querySelectorAll(".hero__image-img");for(var a=0;a<b.length;a++){var c=b[a];c.addEventListener("lazyloaded",function(f){var d=f.target.parentNode;d.classList.add("hero__image--overlay")})}};lazyFeaturedImage();
+   </script>
+<script defer src="assets/js/svg2js.js?v=f1b2af45feed0620bb95e4521fb768c2"></script>
+<script defer src="assets/js/svg-fix.js?v=7c0d2bb7276904b382e80bf2d85e8a96"></script>
+
+
+</body>
+</html>

@@ -1,0 +1,89 @@
+<?xml version="1.0" encoding="utf-8"?>
+<feed xmlns="http://www.w3.org/2005/Atom">
+    <title>www.balavivek.com</title>
+    <link href="feed.xml" rel="self" />
+    <link href="file:///home/balavivek/Documents/Publii/sites/wwwbalavivekcom/preview" />
+    <updated>2019-11-02T21:22:58+01:00</updated>
+    <author>
+        <name>Balavivek</name>
+    </author>
+    <id>file:///home/balavivek/Documents/Publii/sites/wwwbalavivekcom/preview</id>
+
+    <entry>
+        <title>Towards a Virtual Stuntman</title>
+        <author>
+            <name>Balavivek</name>
+        </author>
+        <link href="towards-a-virtual-stuntman.html"/>
+        <id>towards-a-virtual-stuntman.html</id>
+
+        <updated>2019-11-02T21:00:13+01:00</updated>
+            <summary>
+                <![CDATA[
+                        <img src="media/posts/1/teaser.gif" alt="" />
+                     Code accompanying the SIGGRAPH 2018 paper: "DeepMimic: Example-Guided Deep Reinforcement Learning of Physics-Based Character Skills". The framework uses reinforcement learning to train a simulated humanoid to imitate a variety of motion skills from mocap data. Project page: https://xbpeng.github.io/projects/DeepMimic/index.html States and Actions Reference data creation&hellip;
+                ]]>
+            </summary>
+        <content type="html">
+            <![CDATA[
+                    <img src="media/posts/1/teaser.gif" alt="" />
+                <p><img class="post__image" src="media/posts/1/teaser.gif" alt="" width="800" height="287"></p>
+<p>Code accompanying the SIGGRAPH 2018 paper: "DeepMimic: Example-Guided Deep Reinforcement Learning of Physics-Based Character Skills". The framework uses reinforcement learning to train a simulated humanoid to imitate a variety of motion skills from mocap data.</p>
+<p><strong>Project page</strong>: <a href="Project page: https:/xbpeng.github.io/projects/DeepMimic/index.html">https://xbpeng.github.io/projects/DeepMimic/index.html</a></p>
+<p><strong> States and Actions</strong></p>
+<ul>
+<li style="font-weight: 400;"><span style="font-weight: 400;">The state s describes the configuration of the character’s body, with features consisting of the relative positions of each link with respect to the root (designated to be the pelvis), their rotations expressed in quaternions, and their linear and angular velocities. </span></li>
+<li style="font-weight: 400;"><span style="font-weight: 400;">All features are computed in the character’s local coordinate frame, with the root at the origin and the x-axis along the root link’s facing direction</span></li>
+<li style="font-weight: 400;"><span style="font-weight: 400;">Policies trained to achieve additional task objectives, such as walking in a particular direction or hitting a target, are also provided with a goal g, which can be treated in a similarly fashion as the state. </span></li>
+<li style="font-weight: 400;"><span style="font-weight: 400;">The action a from the policy specifies target orientations for PD controllers at each joint. </span></li>
+</ul>
+<p><strong>Reference data creation</strong></p>
+<p><img class="post__image" src="media/posts/1/image10.gif" alt="" width="281" height="211"><img class="post__image" src="media/posts/1/image3.png" alt="" width="412" height="130"></p>
+<p><strong>Network Architecture</strong></p>
+<ul>
+<li style="font-weight: 400;"><span style="font-weight: 400;">Policy π is represented by a neural network that maps a given state s and goal g to a distribution over action π(a|s,g). </span></li>
+<li style="font-weight: 400;"><span style="font-weight: 400;">The inputs are processed by two fully-connected layers with 1024, and 512 units each, followed by a linear output layer. ReLU activations are used for all hidden units.</span></li>
+</ul>
+<p><span style="font-weight: 400;">Permalink:</span><span style="font-weight: 400;"> <a href="#INTERNAL_LINK#/post/null">http://tiny.cc/qgwlfz</a></span></p>
+<p><strong>Reward  <img class="post__image" src="media/posts/1/image1.png" alt="" width="139" height="29"></strong></p>
+<ul>
+<li style="font-weight: 400;"><span style="font-weight: 400;">Pose Reward</span>
+<ul>
+<li style="font-weight: 400;"><span style="font-weight: 400;">Pose reward r^p  encourages the character to match the joint orientations of the reference motion at each step.</span></li>
+<li style="font-weight: 400;"><span style="font-weight: 400;">It is computed as the difference between the joint orientation quaternions of the simulated character and those of the reference motion. </span></li>
+<li style="font-weight: 400;"><img class="post__image" src="media/posts/1/image4.png" alt="" width="248" height="73"></li>
+</ul>
+</li>
+</ul>
+<ul>
+<li style="font-weight: 400;"><span style="font-weight: 400;">Velocity Reward</span>
+<ul>
+<li style="font-weight: 400;"><span style="font-weight: 400;">The velocity reward r^v is computed from the difference of local joint velocities, with angular velocity of the jth joint. The target velocity is computed from the data via finite difference.</span></li>
+<li style="font-weight: 400;"><img class="post__image" src="media/posts/1/image6.png" alt="" width="265" height="77"></li>
+</ul>
+</li>
+<li style="font-weight: 400;"><span style="font-weight: 400;">End Effector Reward</span>
+<ul>
+<li style="font-weight: 400;"><span style="font-weight: 400;">The end-effector reward ret encourages the character’s hands and feet to match the positions from the reference motion.</span></li>
+<li style="font-weight: 400;"><img class="post__image" src="media/posts/1/image2.png" alt="" width="276" height="73"></li>
+</ul>
+</li>
+<li style="font-weight: 400;"><span style="font-weight: 400;">r^c penalizes deviations in the character’s center-of-mass</span>
+<ul>
+<li style="font-weight: 400;"><img class="post__image" src="media/posts/1/image7.png" alt="" width="238" height="56"></li>
+</ul>
+</li>
+</ul>
+<p><img class="post__image" src="media/posts/1/image5.png" alt="Permalink:https://github.com/bsivanantham/DeepMimic/blob/3c7f2171bb09512bee47d667de39761cde9b2d53/DeepMimicCore/scenes/SceneImitate.cpp#L130" width="588" height="142"></p>
+<p><span style="font-weight: 400;">Permalink:</span><span style="font-weight: 400;"> <a href="#INTERNAL_LINK#/post/null">http://tiny.cc/ahwlfz</a></span></p>
+<p><strong>Results</strong></p>
+<p><iframe width="560" height="315" src="https://www.youtube.com/embed/8QFzD-xEKzU" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen="allowfullscreen" ></iframe></p>
+<p>Code: <a href="#INTERNAL_LINK#/post/null">https://github.com/bsivanantham/DeepMimic</a></p>
+<p>Completely trained model: <a href="#INTERNAL_LINK#/post/null">http://tiny.cc/aiwlfz</a></p>
+<p><strong>Reference</strong></p>
+<p>The paper <a href="https://xbpeng.github.io/projects/DeepMimic/index.html" class="eq cf gy gz ha hb" target="_blank" rel="noopener noreferrer"><em class="he">DeepMimic: Example-Guided Deep Reinforcement Learning of Physics-Based Character Skills</em></a> has opened up exciting possibilities for improving visual demonstration with highly dynamic character skills.</p>
+<p>The DeepMimic open-sourced codes, data, and frameworks are available on <a href="https://github.com/bsivanantham/DeepMimic" target="_blank" rel="noopener noreferrer">GitHub</a>.</p>
+            ]]>
+        </content>
+    </entry>
+</feed>
